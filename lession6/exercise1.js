@@ -1,26 +1,28 @@
-function printDaysOfMonth(month) {
-    switch (month) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-            console.log('Có 31 ngày');
-            break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            console.log('Có 30 ngày');
-            break;
-        case 2:
-            console.log('Có 28 hoặc 29 ngày');
-            break;
-        default:
-            throw 'Tháng không hợp lệ';
+const getMax = (max, ...values) => {
+    for (let value of values) {
+        if (max < value) {
+            max = value;
+        }
     }
+
+    return max;
+};
+
+function getMax2() {
+    var values = Array.prototype.slice.call(arguments),
+        max = values.length,
+        result = values[0],
+        i;
+
+    for (i = 1; i < max; i++) {
+        if (values[i] > result) {
+            result = values[i];
+        }
+    }
+
+    return result;
 }
 
-printDaysOfMonth(2);
+
+console.log(getMax(1, 2, 3));
+console.log(getMax2(1, 2, 3));
