@@ -17,7 +17,8 @@ function getListFibonacci(n) {
         const currentValue = last1Value + last2Value;
 
         result.push(currentValue);
-        [last2Value, last1Value] = [last1Value, currentValue];
+        last2Value = last1Value;
+        last1Value = currentValue;
     }
 
     return result;

@@ -7,7 +7,8 @@ function getFibonacci1(n) {
 
     for (let i = n - 2; i--; i > 0) {
         currentValue = last1Value + last2Value;
-        [last2Value, last1Value] = [last1Value, currentValue];
+        last2Value = last1Value;
+        last1Value = currentValue;
     }
 
     return currentValue;

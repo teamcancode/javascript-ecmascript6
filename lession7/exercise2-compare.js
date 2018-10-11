@@ -11,15 +11,14 @@ function getListFibonacci1(n) {
     }
 
     const result = [1, 1];
-    let currentValue = 1,
-        lastValue = 1;
+    let last1Value = 1, last2Value = 1;
 
     for (let i = 2; i < n; i++) {
-        const nextValue = currentValue + lastValue;
-        result.push(nextValue);
+        const currentValue = last1Value + last2Value;
 
-        lastValue = currentValue;
-        currentValue = nextValue;
+        result.push(currentValue);
+        last2Value = last1Value;
+        last1Value = currentValue;
     }
 
     return result;
@@ -40,16 +39,16 @@ function getListFibonacci2(n) {
     const result = [1, 1];
 
     for (let i = 2; i < n; i++) {
-        const nextValue = result[i - 1] + result[i - 2];
-        result.push(nextValue);
+        const currentValue = result[i - 1] + result[i - 2];
+        result.push(currentValue);
     }
 
     return result;
 }
 
 console.time('getListFibonacci');
-// const result = getListFibonacci1(10000);
-const result = getListFibonacci2(10000);
+const result = getListFibonacci1(10000);
+// const result = getListFibonacci2(10000);
 console.timeEnd('getListFibonacci');
 
 // console.log(result);
