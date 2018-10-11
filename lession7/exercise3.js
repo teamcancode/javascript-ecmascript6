@@ -1,4 +1,4 @@
-const getFibonacci1 = n => {
+const fibonacci1 = n => {
     if (!Number.isInteger(n) || n < 3) {
         return 1;
     }
@@ -14,19 +14,17 @@ const getFibonacci1 = n => {
     return currentValue;
 };
 
-const getFibonacci2 = n => {
+const fibonacci2 = n => {
     if (!Number.isInteger(n) || n < 3) {
         return 1;
     }
 
-    return getFibonacci2(n - 2) + getFibonacci2(n - 1);
+    return fibonacci2(n - 2) + fibonacci2(n - 1);
 };
 
-let result1, result2;
-
 console.time('getListFibonacci');
-result1 = getFibonacci1(20);
-// result2 = getFibonacci2(20);
+const result = fibonacci1(10);
+// const result = fibonacci2(10);
 console.timeEnd('getListFibonacci');
 
-console.log(result1, result2);
+console.log(result);

@@ -1,4 +1,4 @@
-function getListFibonacci(n) {
+const listFibonacci = n => {
     if (!Number.isInteger(n) || n < 1) {
         return [];
     }
@@ -11,18 +11,14 @@ function getListFibonacci(n) {
     }
 
     const result = [1, 1];
-    let last1Value = 1, last2Value = 1;
 
-    for (let i = n - 2; i--; i > 0) {
-        const currentValue = last1Value + last2Value;
-
+    for (let i = 2; i < n; i++) {
+        const currentValue = result[i - 1] + result[i - 2];
         result.push(currentValue);
-        last2Value = last1Value;
-        last1Value = currentValue;
     }
 
     return result;
-}
+};
 
-let result = getListFibonacci(10);
+let result = listFibonacci(10);
 console.log(result);

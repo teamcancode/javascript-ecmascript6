@@ -1,14 +1,7 @@
-function getLargest(value1, ...values) {
-    let result = value1;
+const getLargest = (...values) => {
+    return values.reduce((result, value) => {
+        return value > result ? value : result;
+    });
+};
 
-    for (let value of values) {
-        if (value > result) {
-            result = value;
-        }
-    }
-
-    return result;
-}
-
-let result = getLargest(1, 9, 5, 3, 4);
-console.log(result);
+console.log(getLargest(1, 9, 5, 3, 4));
