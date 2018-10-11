@@ -1,32 +1,31 @@
 function getFibonacci1(n) {
-    if (typeof n !== 'number' || n < 3) {
+    if (!Number.isInteger(n) || n < 3) {
         return 1;
     }
 
-    let currentValue = 1,
-        lastValue = 1,
-        nextValue;
+    let last1Value = 1, last2Value = 1, currentValue;
 
     for (let i = n - 2; i--; i > 0) {
-        nextValue = currentValue + lastValue;
-        lastValue = currentValue;
-        currentValue = nextValue;
+        currentValue = last1Value + last2Value;
+        [last2Value, last1Value] = [last1Value, currentValue];
     }
 
-    return nextValue;
+    return currentValue;
 }
 
 function getFibonacci2(n) {
-    switch (n) {
-        case 0:
-        case 1:
-        case 2:
-            return 1;
-        default:
-            return getFibonacci2(n - 2) + getFibonacci1(n - 1);
+    if (!Number.isInteger(n) || n < 3) {
+        return 1;
     }
+
+    return getFibonacci2(n - 2) + getFibonacci1(n - 1);
 }
 
-let result1 = getFibonacci1(10);
-let result2 = getFibonacci2(10);
+let result1, result2;
+
+console.time('getListFibonacci');
+result1 = getFibonacci1(10);
+// result2 = getFibonacci2(10);
+console.timeEnd('getListFibonacci');
+
 console.log(result1, result2);

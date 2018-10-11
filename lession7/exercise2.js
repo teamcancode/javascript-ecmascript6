@@ -1,11 +1,9 @@
 function getListFibonacci(n) {
-    if (typeof n !== 'number' || n < 0) {
-        n = 0;
+    if (!Number.isInteger(n) || n < 1) {
+        return [];
     }
 
     switch (n) {
-        case 0:
-            return [];
         case 1:
             return [1];
         case 2:
@@ -13,15 +11,13 @@ function getListFibonacci(n) {
     }
 
     const result = [1, 1];
-    let currentValue = 1,
-        lastValue = 1;
+    let last1Value = 1, last2Value = 1;
 
     for (let i = n - 2; i--; i > 0) {
-        const nextValue = currentValue + lastValue;
-        result.push(nextValue);
+        const currentValue = last1Value + last2Value;
 
-        lastValue = currentValue;
-        currentValue = nextValue;
+        result.push(currentValue);
+        [last2Value, last1Value] = [last1Value, currentValue];
     }
 
     return result;
